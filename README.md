@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/Hackbit/angularattack2018-toolshed.svg?branch=master)](https://travis-ci.org/Hackbit/angularattack2018-toolshed)
