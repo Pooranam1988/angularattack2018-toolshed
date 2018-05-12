@@ -5,7 +5,7 @@ node_js:
 
 cache: yarn
 
-before_script: cd frontEnd
+before_script: cd frontEnd && yarn
 
 script: # the build step
    - yarn run build
