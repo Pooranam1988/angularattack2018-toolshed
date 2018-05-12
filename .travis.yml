@@ -28,7 +28,7 @@ deploy:
       branch: master
   - provider: script
     skip_cleanup: true
-    script: ssh ubuntu@ec2-52-23-192-142.compute-1.amazonaws.com "cd angularattack2018-toolshed/backend && git pull && /usr/bin/pm2 restart angular-attack"
+    script: ssh ubuntu@ec2-52-23-192-142.compute-1.amazonaws.com "cd angularattack2018-toolshed/backend && git pull && db-migrate up && /usr/bin/pm2 restart angular-attack"
     on:
       branch: master
 
