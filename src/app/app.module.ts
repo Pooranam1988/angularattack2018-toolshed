@@ -13,6 +13,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ListingsService} from "./listings.service";
 import {HttpClientModule} from "@angular/common/http";
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     FooterComponent,
     MainComponent,
-    ListComponent
+    ListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.238.1",
+    "axios": "^0.18.0",
     "db-migrate": "^0.11.1",
     "db-migrate-pg": "^0.4.0",
     "dotenv": "^5.0.1",

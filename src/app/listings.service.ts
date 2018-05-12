@@ -12,4 +12,8 @@ export class ListingsService {
   createListing(body): Observable<any> {
     return this.http.post(`${environment.baseUrl}/api/listings`, body)
   }
+
+  getAll(): Observable<any> {
+    return this.http.get(`${environment.baseUrl}/api/listings`)
+  }
 }

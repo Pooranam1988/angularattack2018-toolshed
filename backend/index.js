@@ -9,13 +9,36 @@ const AWS = require('aws-sdk')
 const uuidv4 = require('uuid/v4')
 const morgan = require('morgan')
 const database = require('./database')
+const axios = require('axios')
 
 const s3 = new AWS.S3()
 
 app.use(bodyParser.json({limit: '4mb'}))
 app.use(morgan('tiny'))
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/api/listings', (req, res) => {
+  (async () => {
+    try {
+      let listings = await database.getAll()
+
+      await Promise.all(listings.map(l =>
+        axios.get(`https://s3.amazonaws.com/angular-attack/${l.img}`)
+          .then(({data}) => {
+            Object.assign(l, {img: `data:image/png;base64,${data}`})
+          })
+          .catch((error) => {
+            console.trace(error)
+          })
+      ))
+
+      res.send({data: listings})
+    } catch (e) {
+      console.trace(e)
+      res.status(500).send()
+    }
+  })()
+
+})
 
 app.post('/api/listings', (req, res) => {
   let uuid = uuidv4()
@@ -35,7 +58,7 @@ app.post('/api/listings', (req, res) => {
     } else {
 
       (async () => {
-        await database.createListing(Object.assign(req.body, {img: filename}))
+        await database.create(Object.assign(req.body, {img: filename}))
 
         res.status(201).send({
           img: `${uuid}.jpg`
