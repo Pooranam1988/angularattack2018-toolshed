@@ -20,7 +20,7 @@ before_deploy:
 
 deploy:
   - provider: pages
-    local-dir: frontEnd/dist
+    local-dir: dist
     skip-cleanup: true
     github-token: "$GITHUB_TOKEN"
     keep-history: true

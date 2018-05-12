@@ -8,6 +8,7 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {MainComponent} from './main/main.component';
 import {AppRouterModule} from "./app-router/app-router.module";
+import {JsonpModule} from "@angular/http";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {AppRouterModule} from "./app-router/app-router.module";
   ],
   imports: [
     BrowserModule,
-    AppRouterModule
+    AppRouterModule,
+    JsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
