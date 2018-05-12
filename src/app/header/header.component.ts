@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Jsonp, Request} from '@angular/http';
 
 
 @Component({
@@ -9,17 +8,10 @@ import {Jsonp, Request} from '@angular/http';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private jsonp: Jsonp) {
+  constructor() {
   }
 
   ngOnInit() {
-  }
-
-  onVote() {
-    this.jsonp.request(new Request({
-      method: 'POST',
-      url: 'http://www.angularattack.com/entries/208-todo/vote/stats',
-    })).subscribe(() => {});
   }
 
 }

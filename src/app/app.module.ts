@@ -21,8 +21,7 @@ import {JsonpModule} from "@angular/http";
   ],
   imports: [
     BrowserModule,
-    AppRouterModule,
-    JsonpModule
+    AppRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
