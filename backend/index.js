@@ -16,6 +16,12 @@ const s3 = new AWS.S3()
 app.use(bodyParser.json({limit: '4mb'}))
 app.use(morgan('tiny'))
 
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
+
 app.get('/api/listings', (req, res) => {
   (async () => {
     try {
