@@ -8,7 +8,7 @@ cache: yarn
 before_script: cd frontEnd
 
 script: # the build step
-   - yarn run deploy
+   - yarn run build
 
 notifications:
   email: # only receive email when the build status changes (someone broke the build!)
