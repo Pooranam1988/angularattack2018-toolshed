@@ -2,7 +2,6 @@ language: node_js
 node_js:
 - node
 cache: yarn
-before_script: cd frontEnd && yarn
 script:
 - yarn run build
 notifications:
@@ -14,8 +13,6 @@ addons:
   ssh_known_hosts: ec2-52-23-192-142.compute-1.amazonaws.com
 
 before_deploy:
-- pwd
-- ls
 - openssl aes-256-cbc -K $encrypted_2cd42bf4aa47_key -iv $encrypted_2cd42bf4aa47_iv -in angular_attack-cert.enc -out angular_attack-cert -d
 - eval "$(ssh-agent -s)"
 - chmod 600 angular_attack-cert
