@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { SearchComponent } from './search/search.component';
-import { DetailComponent } from './detail/detail.component';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
+import {SearchComponent} from './search/search.component';
+import {DetailComponent} from './detail/detail.component';
+import {AppRouterModule} from "./app-router.module";
 
 
 @NgModule({
@@ -16,9 +17,11 @@ import { DetailComponent } from './detail/detail.component';
     DetailComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
