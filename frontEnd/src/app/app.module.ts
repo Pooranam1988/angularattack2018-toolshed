@@ -3,18 +3,20 @@ import {NgModule} from '@angular/core';
 
 
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
-import {SearchComponent} from './search/search.component';
-import {DetailComponent} from './detail/detail.component';
-import {AppRouterModule} from "./app-router.module";
+import {LayoutComponent} from './layout/layout.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+import {MainComponent} from './main/main.component';
+import {AppRouterModule} from "./app-router/app-router.module";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    SearchComponent,
-    DetailComponent
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
