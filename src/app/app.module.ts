@@ -8,7 +8,11 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {MainComponent} from './main/main.component';
 import {AppRouterModule} from "./app-router/app-router.module";
-import {JsonpModule} from "@angular/http";
+import {ListComponent} from './list/list.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ReactiveFormsModule} from "@angular/forms";
+import {ListingsService} from "./listings.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -17,13 +21,17 @@ import {JsonpModule} from "@angular/http";
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MainComponent
+    MainComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
-    AppRouterModule
+    AppRouterModule,
+    NgbModule.forRoot(),
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ListingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
