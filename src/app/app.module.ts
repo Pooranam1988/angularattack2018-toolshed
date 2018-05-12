@@ -13,7 +13,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from "@angular/forms";
 import {ListingsService} from "./listings.service";
 import {HttpClientModule} from "@angular/common/http";
-import { CardComponent } from './card/card.component';
+import {CardComponent} from './card/card.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { CardComponent } from './card/card.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ListingsService],
+  providers: [ListingsService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
