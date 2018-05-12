@@ -1,25 +1,36 @@
 language: node_js
-
 node_js:
-   - node # will use latest node
-
+- node
 cache: yarn
-
 before_script: cd frontEnd && yarn
-
-script: # the build step
-   - yarn run build
-
+script:
+- yarn run build
 notifications:
-  email: # only receive email when the build status changes (someone broke the build!)
+  email:
     on_failure: change
     on_success: change
 
+addons:
+  ssh_known_hosts: ec2-52-23-192-142.compute-1.amazonaws.com
+
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_2cd42bf4aa47_key -iv $encrypted_2cd42bf4aa47_iv
+- in angular_attack-cert.enc -out angular_attack-cert -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/angular_attack-cert
+- ssh-add /tmp/angular_attack-cert
+
 deploy:
-  local-dir: frontEnd/dist
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
-  keep-history: true
-  on:
-    branch: master
+  - provider: pages
+    local-dir: frontEnd/dist
+    skip-cleanup: true
+    github-token: "$GITHUB_TOKEN"
+    keep-history: true
+    on:
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    script: ssh ubuntu@ec2-52-23-192-142.compute-1.amazonaws.com "cd angularattack2018-toolshed/backend && git pull && /usr/bin/pm2 restart angular-attack"
+    on:
+      branch: master
+
