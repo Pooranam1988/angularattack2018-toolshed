@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "build": "ng build --prod --base-href \"/angularattack2018-toolshed/\"",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
